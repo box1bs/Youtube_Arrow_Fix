@@ -1,0 +1,17 @@
+{
+  "manifest_version": 2,
+  "name": "YouTube Arrow Fix",
+  "version": "1.0",
+  "description": "Фикс поведения строк {верх: пеовышение громкости на 10%, низ: понижение громкости на 10%, право: +5 сек., лкво: -5 сек.}",
+  "content_scripts": [
+    {
+      "matches": ["*://*.youtube.com/*"],
+      "js": ["main.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "icons": {
+    "48": "icon.svg",
+    "96": "icon.svg"
+  }
+}
