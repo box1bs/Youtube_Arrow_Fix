@@ -6,7 +6,6 @@
   "browser_specific_settings": {
     "gecko": {
       "id": "youtube-arrow-fix@localhost",
-      "min_firefox_version": "109.0",
       "data_collection_permissions": {
         "required": [
             "none"
