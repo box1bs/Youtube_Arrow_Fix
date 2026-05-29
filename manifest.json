@@ -3,6 +3,18 @@
   "name": "YouTube Arrow Fix",
   "version": "1.0",
   "description": "Фикс поведения строк {верх: пеовышение громкости на 10%, низ: понижение громкости на 10%, право: +5 сек., лкво: -5 сек.}",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "youtube-arrow-fix@localhost",
+      "min_firefox_version": "109.0",
+      "data_collection_permissions": {
+        "required": [
+            "none"
+        ],
+        "optional": []
+      }
+    }
+  },
   "content_scripts": [
     {
       "matches": ["*://*.youtube.com/*"],
