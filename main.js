@@ -37,7 +37,7 @@ document.addEventListener('yt-navigate-finish', () => {
     const observer = new MutationObserver(() => {
         const video = document.querySelector('video');
         if (video) {
-            video.volume = globalVolume;
+            video.volume = Math.min(globalVolume, video.volume);
             observer.disconnect();
         }
     });
