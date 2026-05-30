@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "YouTube Arrow Fix",
-  "version": "1.0",
+  "version": "1.1",
   "description": "Фикс поведения строк {верх: пеовышение громкости на 10%, низ: понижение громкости на 10%, право: +5 сек., лево: -5 сек.}",
   "browser_specific_settings": {
     "gecko": {
