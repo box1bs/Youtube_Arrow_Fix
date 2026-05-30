@@ -1,4 +1,10 @@
-let globalVolume = 0.3;
+let globalVolume = 0.5;
+document.addEventListener('volumechange', () => {
+    const video = document.querySelector('video');
+    if (video && video.volume !== globalVolume) {
+        video.volume = globalVolume;
+    }
+}, true);
 
 document.addEventListener('keydown', (e) => {
     const tagName = document.activeElement.tagName;
@@ -17,13 +23,13 @@ document.addEventListener('keydown', (e) => {
             break;
 
         case 'ArrowUp':
-            video.volume = Math.min(1, video.volume + 0.1);
-            globalVolume = video.volume;
+            globalVolume = Math.min(1, globalVolume + 0.1);
+            video.volume = globalVolume;
             break;
-
+            
         case 'ArrowDown':
-            video.volume = Math.max(0, video.volume - 0.1);
-            globalVolume = video.volume;
+            globalVolume = Math.max(0, globalVolume - 0.1);
+            video.volume = globalVolume;
             break;
 
         default:
@@ -31,15 +37,25 @@ document.addEventListener('keydown', (e) => {
     }
     e.stopImmediatePropagation();
     e.preventDefault();
-}, true)
+}, true);
 
-document.addEventListener('yt-navigate-finish', () => {
+function waitForVideo(callback) {
+    const video = document.querySelector('video');
+    if (video) { callback(video); return; }
+
     const observer = new MutationObserver(() => {
         const video = document.querySelector('video');
         if (video) {
-            video.volume = Math.min(globalVolume, video.volume);
+            callback(video);
             observer.disconnect();
         }
     });
     observer.observe(document.body, { childList: true, subtree: true });
-})
+}
+
+function applyVolume(video) {
+    video.volume = globalVolume;
+}
+
+waitForVideo(applyVolume);
+document.addEventListener('yt-navigate-finish', () => waitForVideo(applyVolume));
